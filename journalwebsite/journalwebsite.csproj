@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C348DE05-DEF6-4303-8D0B-157A3408E30C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>journalwebsite</RootNamespace>
+    <AssemblyName>journalwebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminSection.aspx" />
+    <Content Include="changephase.aspx" />
+    <Content Include="EditUser.aspx" />
+    <Content Include="guidesetting.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="ItemView.aspx" />
+    <Content Include="Journal.aspx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="ReviewerSection.aspx" />
+    <Content Include="Sections.aspx" />
+    <Content Include="sectionsetting.aspx" />
+    <Content Include="SignUp.aspx" />
+    <Content Include="site.aspx" />
+    <Content Include="sitesetting.aspx" />
+    <Content Include="SubmittedArticals.aspx" />
+    <Content Include="IncompletedMenuScript.aspx" />
+    <Content Include="controlpanel.Master" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="packages.config" />
+    <EntityDeploy Include="DAL\journalmodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>journalmodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\journalmodel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>journalmodel.edmx</DependentUpon>
+      <LastGenOutput>journalmodel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\journalmodel.edmx.diagram">
+      <DependentUpon>journalmodel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\journalmodel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>journalmodel.edmx</DependentUpon>
+      <LastGenOutput>journalmodel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Main.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="auhtorguid.aspx" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\buttons.bootstrap.min.css" />
+    <Content Include="css\custom.min.css" />
+    <Content Include="css\dataTables.bootstrap.min.css" />
+    <Content Include="css\fixedHeader.bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\font-awesome.min1.css" />
+    <Content Include="css\nprogress.css" />
+    <Content Include="css\responsive.bootstrap.min.css" />
+    <Content Include="css\scroller.bootstrap.min.css" />
+    <Content Include="dashboard.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\buttons.bootstrap.min.js" />
+    <Content Include="js\buttons.flash.min.js" />
+    <Content Include="js\buttons.html5.min.js" />
+    <Content Include="js\buttons.print.min.js" />
+    <Content Include="js\ckeditor.js" />
+    <Content Include="js\config.js" />
+    <Content Include="js\contents.css" />
+    <Content Include="js\custom.min.js" />
+    <Content Include="js\dataTables.bootstrap.min.js" />
+    <Content Include="js\dataTables.buttons.min.js" />
+    <Content Include="js\dataTables.fixedHeader.min.js" />
+    <Content Include="js\dataTables.keyTable.min.js" />
+    <Content Include="js\dataTables.responsive.min.js" />
+    <Content Include="js\fastclick.js" />
+    <Content Include="js\jquery.dataTables.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.smartWizard.js" />
+    <Content Include="js\jquery.tagsinput.js" />
+    <Content Include="js\lang\en.js" />
+    <Content Include="js\nprogress.js" />
+    <Content Include="js\parsley.min.js" />
+    <Content Include="js\plugins\symbol\icons\symbol.png" />
+    <Content Include="js\plugins\symbol\lang\en.js" />
+    <Content Include="js\plugins\symbol\plugin.js" />
+    <Content Include="js\responsive.bootstrap.js" />
+    <Content Include="js\skins\moono\editor.css" />
+    <Content Include="js\styles.js" />
+    <Content Include="js\switchery.min.js" />
+    <Content Include="submit_new_manuscript.aspx" />
+    <Content Include="Subscribers.aspx" />
+    <Content Include="Subscription.aspx" />
+    <Content Include="Users.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminSection.aspx.cs">
+      <DependentUpon>AdminSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminSection.aspx.designer.cs">
+      <DependentUpon>AdminSection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="changephase.aspx.cs">
+      <DependentUpon>changephase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="changephase.aspx.designer.cs">
+      <DependentUpon>changephase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="guidesetting.aspx.cs">
+      <DependentUpon>guidesetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="guidesetting.aspx.designer.cs">
+      <DependentUpon>guidesetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ItemView.aspx.cs">
+      <DependentUpon>ItemView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemView.aspx.designer.cs">
+      <DependentUpon>ItemView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Journal.aspx.cs">
+      <DependentUpon>Journal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Journal.aspx.designer.cs">
+      <DependentUpon>Journal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewerSection.aspx.cs">
+      <DependentUpon>ReviewerSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReviewerSection.aspx.designer.cs">
+      <DependentUpon>ReviewerSection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sections.aspx.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sections.aspx.designer.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sectionsetting.aspx.cs">
+      <DependentUpon>sectionsetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sectionsetting.aspx.designer.cs">
+      <DependentUpon>sectionsetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site.aspx.cs">
+      <DependentUpon>site.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site.aspx.designer.cs">
+      <DependentUpon>site.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sitesetting.aspx.cs">
+      <DependentUpon>sitesetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sitesetting.aspx.designer.cs">
+      <DependentUpon>sitesetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubmittedArticals.aspx.cs">
+      <DependentUpon>SubmittedArticals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubmittedArticals.aspx.designer.cs">
+      <DependentUpon>SubmittedArticals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IncompletedMenuScript.aspx.cs">
+      <DependentUpon>IncompletedMenuScript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IncompletedMenuScript.aspx.designer.cs">
+      <DependentUpon>IncompletedMenuScript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="auhtorguid.aspx.cs">
+      <DependentUpon>auhtorguid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="auhtorguid.aspx.designer.cs">
+      <DependentUpon>auhtorguid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="controlpanel.Master.cs">
+      <DependentUpon>controlpanel.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controlpanel.Master.designer.cs">
+      <DependentUpon>controlpanel.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\journalmodel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>journalmodel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\journalmodel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>journalmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\journalmodel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>journalmodel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="submit_new_manuscript.aspx.cs">
+      <DependentUpon>submit_new_manuscript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="submit_new_manuscript.aspx.designer.cs">
+      <DependentUpon>submit_new_manuscript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Subscribers.aspx.cs">
+      <DependentUpon>Subscribers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subscribers.aspx.designer.cs">
+      <DependentUpon>Subscribers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Subscription.aspx.cs">
+      <DependentUpon>Subscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subscription.aspx.designer.cs">
+      <DependentUpon>Subscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Author\" />
+    <Folder Include="files\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>43485</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:43485/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

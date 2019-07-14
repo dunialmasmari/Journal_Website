@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d60c73f82a849b48aad0467ce0e8aff" Name="Diagram1">
+        <EntityTypeShape EntityType="journalwebsitedbModel.author" Width="1.5" PointX="4.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.item" Width="1.5" PointX="3.625" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.menuscript" Width="1.5" PointX="6.625" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.menustatu" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.section" Width="1.5" PointX="6.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.user" Width="1.5" PointX="9.375" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.usertype" Width="1.5" PointX="7.125" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="journalwebsitedbModel.menuscript_fk_author" ManuallyRouted="false" />
+        <AssociationConnector Association="journalwebsitedbModel.section_fk_menuscript" ManuallyRouted="false" />
+        <AssociationConnector Association="journalwebsitedbModel.usertype_fk_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.allstatu" Width="1.5" PointX="11" PointY="3.375" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.file" Width="1.5" PointX="6.625" PointY="5.75" />
+        <EntityTypeShape EntityType="journalwebsitedbModel.userhistory" Width="1.5" PointX="11.5" PointY="7.5" />
+        <AssociationConnector Association="journalwebsitedbModel.menuscript_fk_allstatus" />
+        <AssociationConnector Association="journalwebsitedbModel.menustatus_fk_allstatus" />
+        <AssociationConnector Association="journalwebsitedbModel.users_fk_allstatus" />
+        <AssociationConnector Association="journalwebsitedbModel.items_fk_files" />
+        <AssociationConnector Association="journalwebsitedbModel.menuscript_fk_files" />
+        <AssociationConnector Association="journalwebsitedbModel.users_fk_userhistory" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

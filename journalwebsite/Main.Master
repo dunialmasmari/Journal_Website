@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="journalwebsite.Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <!--link href="Contant/bootstrap.min.css" rel="stylesheet" />
+    <link href="Contant/custom.min.css" rel="stylesheet" />
+    <link href="Contant/font-awesome.min.css" rel="stylesheet" />
+    <link href="Contant/nprogress.css" rel="stylesheet" />
+    <link href="Contant/responsive.bootstrap.min.css" rel="stylesheet" /-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">BT Journal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+      </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" href="Sections.aspx">sections</a>
+      </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" href="submit_new_manuscript.aspx">Submit New Artical</a>
+      </li>
+       
+      <li class="nav-item">
+        <a class="nav-link" href="#">Subscribe</a>
+      </li>
+       
+    </ul>
+ 
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav pull-right ">
+      <li class="nav-item ">
+        <a class="nav-link" href="SignUp.aspx">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="LogIn.aspx">LogIn</a>
+      </li>
+      
+    </ul>
+  </div>
+
+</nav>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+     
+  
+      <footer class="py-5 bg-dark">
+      <div class="container ">
+          <div class="text-white row ">
+        <div class="col-3 ">
+<h4> About Journal</h4>
+            <br /> 
+            <p>this is the most amazing journal that you will ever know</p>
+            <a href="#">>More about journal </a><br />
+            <a href="#">>More about journal </a>
+        </div>
+           <div class="col-3 ">
+<h4> About Journal</h4>
+            <br /> 
+            <p>this is the most amazing journal that you will ever know</p>
+            <a href="#">>More about journal </a><br />
+            <a href="#">>More about journal </a>
+        </div>
+           <div class="col-3 ">
+<h4> About Journal</h4>
+            <br /> 
+            <p>this is the most amazing journal that you will ever know</p>
+            <a href="#">>More about journal </a><br />
+            <a href="#">>More about journal </a>
+        </div>
+           <div class="col-3 ">
+<h4> About Journal</h4>
+            <br /> 
+            <p>this is the most amazing journal that you will ever know</p>
+            <a href="#">>More about journal </a><br />
+            <a href="#">>More about journal </a>
+        </div> 
+      </div>
+</div>
+      <!-- /.container -->
+    </footer>
+</body>
+</html>

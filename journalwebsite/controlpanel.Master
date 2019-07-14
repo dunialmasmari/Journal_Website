@@ -1,0 +1,214 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="controlpanel.master.cs" Inherits="journalwebsite.controlpanel" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+       
+
+
+    </asp:ContentPlaceHolder>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/nprogress.css" rel="stylesheet" />
+    <link href="css/custom.min.css" rel="stylesheet" />
+ 
+    
+</head>
+  <body class="nav-md">
+    <div class="container body">
+         
+      <div class="main_container">
+	 
+
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="Home.aspx" class="site_title " style="background:white;height:70px">
+			  
+				<img src="" alt="" style="    width: 100px;margin-left: 49px;" />
+				 </a>
+            </div>
+             
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile">
+              <div class="profile_pic">
+                <img src="http://plus.ubijournal.com/admin/public/avatars/male.png" alt="..." class="img-circle profile_img"/>
+              </div>
+              <div class="profile_info">
+                <span style="color:white">Welcome Then Me </span>
+                <br/>
+				  <br/>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+        
+
+
+        </asp:ContentPlaceHolder>
+           
+            <!-- /sidebar menu -->
+
+           
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle" style="color:white;"><i class="fa fa-bars" ></i></a>
+              </div>
+                
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"  >
+                    <img src="http://plus.ubijournal.com/admin/public/avatars/male.png" alt=""/><span style="color:white">Then Me</span>
+                    <span class=" fa fa-angle-down" style="color:white" ></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                     <li><a href="http://plus.ubijournal.com/admin/publisher/profile/maWXnQ=="><i class="fa fa-user pull-right"></i> Profile</a></li> 
+                     <li><a href="http://plus.ubijournal.com/admin/settings/change_password"><i class="fa fa-cog pull-right"></i> Change Password</a></li>
+                     <li><a href="http://plus.ubijournal.com/admin/login/logout"><i class="fa fa-sign-out pull-right"></i> Logout</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+				
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+
+                    <i class="fa fa-bell-o" style="color:white"></i>				<!--------------------------------------------------------------notification msg------------------------------------------------------------------------------>
+                    <span class="badge bg-red" id="notif"></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="http://plus.ubijournal.com/admin/public/img/img.jpg" alt="Profile Image" /></span>
+                        <span >
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                   
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+				
+			
+						<h4 style="color:white;">
+			<b>BT Journal</b>
+			</h4>
+    <!--alert section ends -->          
+	       </ul>
+            </nav>
+          </div>
+        </div>
+		   <!-- page content -->
+        <!-- page content -->
+                <form id="form1" runat="server">
+    <div>
+      
+
+
+     <div class="right_col" role="main">
+          <div class="">
+            
+<!-----Help------->
+<div id="mySidenav" class="sidenav">
+ <div class="helpHeader"><span >Help</span><a href="javascript:void(0)" class="closebtn text-right" onclick="closeNav()"><i class="fa fa-close"></i></a></div>
+ <div id="sidenavData" class="sidenavData">
+
+ </div>
+</div>
+<div class="text-right" style="cursor:pointer;" onclick="openNav()">
+<img height="20" width="45"  src="http://plus.ubijournal.com/admin/public/img/help.png"/>
+</div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "450px";
+        $('#sidenavData').load('http://plus.ubijournal.com/admin/help/helpNav', { 'page': 'submit_menuscript' });
+    }
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<!-----/Help-------> 
+                            
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+
+
+        </asp:ContentPlaceHolder>
+      
+          </div>
+        </div>
+    </div>
+    </form>
+          
+        <!-- /page content -->
+		 <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+           ubiJournal -  online Journal publishing system <!---<a href="https://ubitechsolutions.com">Ubitech Solutions</a>--->
+			 
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+          </div>
+    </div>
+
+   
+	
+
+  
+       <script   src="js/jquery.min.js"></script>
+       <script src="js/bootstrap.min.js"></script>
+     <script src="js/fastclick.js"></script>
+   
+     <script src="js/nprogress.js"></script>
+       <script src="js/jquery.smartWizard.js"></script>
+      <script src="js/switchery.min.js"></script>
+      <script src="js/jquery.tagsinput.js"></script>
+      <script src="js/parsley.min.js"></script>
+      <script src="js/ckeditor.js"></script>
+   
+      <script src="js/custom.min.js"></script>
+   
+   
+     
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        
+
+
+        </asp:ContentPlaceHolder>
+	
+  </body>
+   
+     
+
+</html>

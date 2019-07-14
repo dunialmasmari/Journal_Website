@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="journalwebsitedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="allstatus">
+    <Key>
+      <PropertyRef Name="filesid" />
+    </Key>
+    <Property Name="filesid" Type="int" Nullable="false" />
+    <Property Name="menuscriptno" Type="int" />
+    <Property Name="menustatusno" Type="int" />
+    <Property Name="usersno" Type="int" />
+    <Property Name="allstatusdate" Type="datetime" />
+    <Property Name="allstatuscomments" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="authorid" />
+    </Key>
+    <Property Name="authorid" Type="int" Nullable="false" />
+    <Property Name="authorname" Type="nvarchar" MaxLength="50" />
+    <Property Name="authoremail" Type="nvarchar" MaxLength="50" />
+    <Property Name="authorphone" Type="nvarchar" MaxLength="25" />
+    <Property Name="authordegree" Type="nvarchar" MaxLength="10" />
+    <Property Name="authoraddress" Type="nvarchar" MaxLength="25" />
+    <Property Name="authorinstitute" Type="nvarchar" MaxLength="25" />
+    <Property Name="menuscriptno" Type="int" />
+  </EntityType>
+  <EntityType Name="files">
+    <Key>
+      <PropertyRef Name="filesid" />
+    </Key>
+    <Property Name="filesid" Type="int" Nullable="false" />
+    <Property Name="filesname" Type="nvarchar" MaxLength="50" />
+    <Property Name="itemsno" Type="int" />
+    <Property Name="menuscriptno" Type="int" />
+  </EntityType>
+  <EntityType Name="items">
+    <Key>
+      <PropertyRef Name="itemsid" />
+    </Key>
+    <Property Name="itemsid" Type="int" Nullable="false" />
+    <Property Name="itemsname" Type="nvarchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="menuscript">
+    <Key>
+      <PropertyRef Name="menuscriptid" />
+    </Key>
+    <Property Name="menuscriptid" Type="int" Nullable="false" />
+    <Property Name="menuscript_title" Type="nvarchar" MaxLength="100" />
+    <Property Name="menuscriptapstract" Type="nvarchar" MaxLength="25" />
+    <Property Name="expacted_dateofpublish" Type="datetime" />
+    <Property Name="sectionno" Type="int" />
+  </EntityType>
+  <EntityType Name="menustatus">
+    <Key>
+      <PropertyRef Name="menustatusid" />
+    </Key>
+    <Property Name="menustatusid" Type="int" Nullable="false" />
+    <Property Name="menustatusnname" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="section">
+    <Key>
+      <PropertyRef Name="sectionid" />
+    </Key>
+    <Property Name="sectionid" Type="int" Nullable="false" />
+    <Property Name="sectionname" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="userhistory">
+    <Key>
+      <PropertyRef Name="userhistoryid" />
+    </Key>
+    <Property Name="userhistoryid" Type="int" Nullable="false" />
+    <Property Name="userhistoryaddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="userhistorybrowser" Type="nvarchar" MaxLength="25" />
+    <Property Name="userhistorytime" Type="datetime" />
+    <Property Name="userhistorylastused" Type="datetime" />
+    <Property Name="userstatus" Type="nvarchar" MaxLength="10" />
+    <Property Name="usersno" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="usersid" />
+    </Key>
+    <Property Name="usersid" Type="int" Nullable="false" />
+    <Property Name="usersname" Type="nvarchar" MaxLength="50" />
+    <Property Name="usersphone" Type="nvarchar" MaxLength="25" />
+    <Property Name="usersemail" Type="nvarchar" MaxLength="50" />
+    <Property Name="userspw" Type="nvarchar" MaxLength="50" />
+    <Property Name="usersmajor" Type="nvarchar" MaxLength="50" />
+    <Property Name="usersgender" Type="char" MaxLength="1" />
+    <Property Name="userscountry" Type="nvarchar" MaxLength="20" />
+    <Property Name="userszipcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="usersaddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="userstypeno" Type="int" />
+  </EntityType>
+  <EntityType Name="usertype">
+    <Key>
+      <PropertyRef Name="usertypeid" />
+    </Key>
+    <Property Name="usertypeid" Type="int" Nullable="false" />
+    <Property Name="usertypename" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="items_fk_files">
+    <End Role="items" Type="Self.items" Multiplicity="0..1" />
+    <End Role="files" Type="Self.files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="itemsid" />
+      </Principal>
+      <Dependent Role="files">
+        <PropertyRef Name="itemsno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menuscript_fk_allstatus">
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="0..1" />
+    <End Role="allstatus" Type="Self.allstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="allstatus">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menuscript_fk_author">
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="0..1" />
+    <End Role="author" Type="Self.author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="author">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menuscript_fk_files">
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="0..1" />
+    <End Role="files" Type="Self.files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="files">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menustatus_fk_allstatus">
+    <End Role="menustatus" Type="Self.menustatus" Multiplicity="0..1" />
+    <End Role="allstatus" Type="Self.allstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menustatus">
+        <PropertyRef Name="menustatusid" />
+      </Principal>
+      <Dependent Role="allstatus">
+        <PropertyRef Name="menustatusno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="section_fk_menuscript">
+    <End Role="section" Type="Self.section" Multiplicity="0..1" />
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="section">
+        <PropertyRef Name="sectionid" />
+      </Principal>
+      <Dependent Role="menuscript">
+        <PropertyRef Name="sectionno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_fk_allstatus">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="allstatus" Type="Self.allstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="allstatus">
+        <PropertyRef Name="usersno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_fk_userhistory">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="userhistory" Type="Self.userhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="userhistory">
+        <PropertyRef Name="usersno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usertype_fk_users">
+    <End Role="usertype" Type="Self.usertype" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usertype">
+        <PropertyRef Name="usertypeid" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="userstypeno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="journalwebsitedbModelStoreContainer">
+    <EntitySet Name="allstatus" EntityType="Self.allstatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="files" EntityType="Self.files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menuscript" EntityType="Self.menuscript" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menustatus" EntityType="Self.menustatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="section" EntityType="Self.section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userhistory" EntityType="Self.userhistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usertype" EntityType="Self.usertype" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="items_fk_files" Association="Self.items_fk_files">
+      <End Role="items" EntitySet="items" />
+      <End Role="files" EntitySet="files" />
+    </AssociationSet>
+    <AssociationSet Name="menuscript_fk_allstatus" Association="Self.menuscript_fk_allstatus">
+      <End Role="menuscript" EntitySet="menuscript" />
+      <End Role="allstatus" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="menuscript_fk_author" Association="Self.menuscript_fk_author">
+      <End Role="menuscript" EntitySet="menuscript" />
+      <End Role="author" EntitySet="author" />
+    </AssociationSet>
+    <AssociationSet Name="menuscript_fk_files" Association="Self.menuscript_fk_files">
+      <End Role="menuscript" EntitySet="menuscript" />
+      <End Role="files" EntitySet="files" />
+    </AssociationSet>
+    <AssociationSet Name="menustatus_fk_allstatus" Association="Self.menustatus_fk_allstatus">
+      <End Role="menustatus" EntitySet="menustatus" />
+      <End Role="allstatus" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="section_fk_menuscript" Association="Self.section_fk_menuscript">
+      <End Role="section" EntitySet="section" />
+      <End Role="menuscript" EntitySet="menuscript" />
+    </AssociationSet>
+    <AssociationSet Name="users_fk_allstatus" Association="Self.users_fk_allstatus">
+      <End Role="users" EntitySet="users" />
+      <End Role="allstatus" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="users_fk_userhistory" Association="Self.users_fk_userhistory">
+      <End Role="users" EntitySet="users" />
+      <End Role="userhistory" EntitySet="userhistory" />
+    </AssociationSet>
+    <AssociationSet Name="usertype_fk_users" Association="Self.usertype_fk_users">
+      <End Role="usertype" EntitySet="usertype" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

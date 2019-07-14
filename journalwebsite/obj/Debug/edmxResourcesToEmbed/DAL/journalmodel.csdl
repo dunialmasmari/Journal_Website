@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="journalwebsitedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="authorid" />
+    </Key>
+    <Property Name="authorid" Type="Int32" Nullable="false" />
+    <Property Name="authorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="authoremail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="authorphone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="authordegree" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="authoraddress" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="authorinstitute" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="menuscriptno" Type="Int32" />
+    <NavigationProperty Name="menuscript" Relationship="Self.menuscript_fk_author" FromRole="author" ToRole="menuscript" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="itemsid" />
+    </Key>
+    <Property Name="itemsid" Type="Int32" Nullable="false" />
+    <Property Name="itemsname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="files" Relationship="journalwebsitedbModel.items_fk_files" FromRole="item" ToRole="file" />
+  </EntityType>
+  <EntityType Name="menuscript">
+    <Key>
+      <PropertyRef Name="menuscriptid" />
+    </Key>
+    <Property Name="menuscriptid" Type="Int32" Nullable="false" />
+    <Property Name="menuscript_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="menuscriptapstract" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="expacted_dateofpublish" Type="DateTime" Precision="3" />
+    <Property Name="sectionno" Type="Int32" />
+    <NavigationProperty Name="authors" Relationship="Self.menuscript_fk_author" FromRole="menuscript" ToRole="author" />
+    <NavigationProperty Name="section" Relationship="Self.section_fk_menuscript" FromRole="menuscript" ToRole="section" />
+    <NavigationProperty Name="allstatus" Relationship="journalwebsitedbModel.menuscript_fk_allstatus" FromRole="menuscript" ToRole="allstatu" />
+    <NavigationProperty Name="files" Relationship="journalwebsitedbModel.menuscript_fk_files" FromRole="menuscript" ToRole="file" />
+  </EntityType>
+  <EntityType Name="menustatu">
+    <Key>
+      <PropertyRef Name="menustatusid" />
+    </Key>
+    <Property Name="menustatusid" Type="Int32" Nullable="false" />
+    <Property Name="menustatusnname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="allstatus" Relationship="journalwebsitedbModel.menustatus_fk_allstatus" FromRole="menustatu" ToRole="allstatu" />
+  </EntityType>
+  <EntityType Name="section">
+    <Key>
+      <PropertyRef Name="sectionid" />
+    </Key>
+    <Property Name="sectionid" Type="Int32" Nullable="false" />
+    <Property Name="sectionname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="menuscripts" Relationship="Self.section_fk_menuscript" FromRole="section" ToRole="menuscript" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="usersid" />
+    </Key>
+    <Property Name="usersid" Type="Int32" Nullable="false" />
+    <Property Name="usersname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="usersphone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="usersemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userspw" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="usersmajor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="usersgender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="userscountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userszipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="usersaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userstypeno" Type="Int32" />
+    <NavigationProperty Name="usertype" Relationship="Self.usertype_fk_users" FromRole="users" ToRole="usertype" />
+    <NavigationProperty Name="allstatus" Relationship="journalwebsitedbModel.users_fk_allstatus" FromRole="user" ToRole="allstatu" />
+    <NavigationProperty Name="userhistories" Relationship="journalwebsitedbModel.users_fk_userhistory" FromRole="user" ToRole="userhistory" />
+  </EntityType>
+  <EntityType Name="usertype">
+    <Key>
+      <PropertyRef Name="usertypeid" />
+    </Key>
+    <Property Name="usertypeid" Type="Int32" Nullable="false" />
+    <Property Name="usertypename" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="Self.usertype_fk_users" FromRole="usertype" ToRole="users" />
+  </EntityType>
+  <Association Name="menuscript_fk_author">
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="0..1" />
+    <End Role="author" Type="Self.author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="author">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="section_fk_menuscript">
+    <End Role="section" Type="Self.section" Multiplicity="0..1" />
+    <End Role="menuscript" Type="Self.menuscript" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="section">
+        <PropertyRef Name="sectionid" />
+      </Principal>
+      <Dependent Role="menuscript">
+        <PropertyRef Name="sectionno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usertype_fk_users">
+    <End Role="usertype" Type="Self.usertype" Multiplicity="0..1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usertype">
+        <PropertyRef Name="usertypeid" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="userstypeno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="journalwebsitedbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="authors" EntityType="Self.author" />
+    <EntitySet Name="items" EntityType="Self.item" />
+    <EntitySet Name="menuscripts" EntityType="Self.menuscript" />
+    <EntitySet Name="menustatus" EntityType="Self.menustatu" />
+    <EntitySet Name="sections" EntityType="Self.section" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="usertypes" EntityType="Self.usertype" />
+    <AssociationSet Name="menuscript_fk_author" Association="Self.menuscript_fk_author">
+      <End Role="menuscript" EntitySet="menuscripts" />
+      <End Role="author" EntitySet="authors" />
+    </AssociationSet>
+    <AssociationSet Name="section_fk_menuscript" Association="Self.section_fk_menuscript">
+      <End Role="section" EntitySet="sections" />
+      <End Role="menuscript" EntitySet="menuscripts" />
+    </AssociationSet>
+    <AssociationSet Name="usertype_fk_users" Association="Self.usertype_fk_users">
+      <End Role="usertype" EntitySet="usertypes" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <EntitySet Name="allstatus" EntityType="journalwebsitedbModel.allstatu" />
+    <EntitySet Name="files" EntityType="journalwebsitedbModel.file" />
+    <EntitySet Name="userhistories" EntityType="journalwebsitedbModel.userhistory" />
+    <AssociationSet Name="menuscript_fk_allstatus" Association="journalwebsitedbModel.menuscript_fk_allstatus">
+      <End Role="menuscript" EntitySet="menuscripts" />
+      <End Role="allstatu" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="menustatus_fk_allstatus" Association="journalwebsitedbModel.menustatus_fk_allstatus">
+      <End Role="menustatu" EntitySet="menustatus" />
+      <End Role="allstatu" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="users_fk_allstatus" Association="journalwebsitedbModel.users_fk_allstatus">
+      <End Role="user" EntitySet="users" />
+      <End Role="allstatu" EntitySet="allstatus" />
+    </AssociationSet>
+    <AssociationSet Name="items_fk_files" Association="journalwebsitedbModel.items_fk_files">
+      <End Role="item" EntitySet="items" />
+      <End Role="file" EntitySet="files" />
+    </AssociationSet>
+    <AssociationSet Name="menuscript_fk_files" Association="journalwebsitedbModel.menuscript_fk_files">
+      <End Role="menuscript" EntitySet="menuscripts" />
+      <End Role="file" EntitySet="files" />
+    </AssociationSet>
+    <AssociationSet Name="users_fk_userhistory" Association="journalwebsitedbModel.users_fk_userhistory">
+      <End Role="user" EntitySet="users" />
+      <End Role="userhistory" EntitySet="userhistories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="allstatu">
+    <Key>
+      <PropertyRef Name="filesid" />
+    </Key>
+    <Property Name="filesid" Type="Int32" Nullable="false" />
+    <Property Name="menuscriptno" Type="Int32" />
+    <Property Name="menustatusno" Type="Int32" />
+    <Property Name="usersno" Type="Int32" />
+    <Property Name="allstatusdate" Type="DateTime" Precision="3" />
+    <Property Name="allstatuscomments" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="menuscript" Relationship="journalwebsitedbModel.menuscript_fk_allstatus" FromRole="allstatu" ToRole="menuscript" />
+    <NavigationProperty Name="menustatu" Relationship="journalwebsitedbModel.menustatus_fk_allstatus" FromRole="allstatu" ToRole="menustatu" />
+    <NavigationProperty Name="user" Relationship="journalwebsitedbModel.users_fk_allstatus" FromRole="allstatu" ToRole="user" />
+  </EntityType>
+  <EntityType Name="file">
+    <Key>
+      <PropertyRef Name="filesid" />
+    </Key>
+    <Property Name="filesid" Type="Int32" Nullable="false" />
+    <Property Name="filesname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="itemsno" Type="Int32" />
+    <Property Name="menuscriptno" Type="Int32" />
+    <NavigationProperty Name="item" Relationship="journalwebsitedbModel.items_fk_files" FromRole="file" ToRole="item" />
+    <NavigationProperty Name="menuscript" Relationship="journalwebsitedbModel.menuscript_fk_files" FromRole="file" ToRole="menuscript" />
+  </EntityType>
+  <EntityType Name="userhistory">
+    <Key>
+      <PropertyRef Name="userhistoryid" />
+    </Key>
+    <Property Name="userhistoryid" Type="Int32" Nullable="false" />
+    <Property Name="userhistoryaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userhistorybrowser" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="userhistorytime" Type="DateTime" Precision="3" />
+    <Property Name="userhistorylastused" Type="DateTime" Precision="3" />
+    <Property Name="userstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="usersno" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="journalwebsitedbModel.users_fk_userhistory" FromRole="userhistory" ToRole="user" />
+  </EntityType>
+  <Association Name="menuscript_fk_allstatus">
+    <End Type="journalwebsitedbModel.menuscript" Role="menuscript" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.allstatu" Role="allstatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="allstatu">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menustatus_fk_allstatus">
+    <End Type="journalwebsitedbModel.menustatu" Role="menustatu" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.allstatu" Role="allstatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menustatu">
+        <PropertyRef Name="menustatusid" />
+      </Principal>
+      <Dependent Role="allstatu">
+        <PropertyRef Name="menustatusno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_fk_allstatus">
+    <End Type="journalwebsitedbModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.allstatu" Role="allstatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="allstatu">
+        <PropertyRef Name="usersno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="items_fk_files">
+    <End Type="journalwebsitedbModel.item" Role="item" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.file" Role="file" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="itemsid" />
+      </Principal>
+      <Dependent Role="file">
+        <PropertyRef Name="itemsno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menuscript_fk_files">
+    <End Type="journalwebsitedbModel.menuscript" Role="menuscript" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.file" Role="file" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuscript">
+        <PropertyRef Name="menuscriptid" />
+      </Principal>
+      <Dependent Role="file">
+        <PropertyRef Name="menuscriptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_fk_userhistory">
+    <End Type="journalwebsitedbModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="journalwebsitedbModel.userhistory" Role="userhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="usersid" />
+      </Principal>
+      <Dependent Role="userhistory">
+        <PropertyRef Name="usersno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
